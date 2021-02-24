@@ -1,0 +1,16 @@
+
+h3{
+    color:black;
+}
+p{
+    color:#545350;
+}
+/*═══════════════════════════════════════════════════════
+                           CARD
+═══════════════════════════════════════════════════════*/
+.card-tasks{
+    background:#FFF0BF;
+    width: auto;
+    height: auto;
+    border-radius: 8px;
+}
