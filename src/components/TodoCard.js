@@ -20,10 +20,10 @@ const TaskCard = ({taskName,studentName, idTask, deleteId, status, statusMesseng
         deleteId(idSelected);
     }
 
-    const handleUpdate = (id, check) => {
-        console.log("Id and status:",id, check)
-        statusMessenger(check)
-        updateId(id)
+    const handleUpdate = () => {
+        console.log("Id and status:",idSelected, checked)
+        statusMessenger(checked)
+        updateId(idSelected)
     }
 
     return(
@@ -33,7 +33,7 @@ const TaskCard = ({taskName,studentName, idTask, deleteId, status, statusMesseng
                     <h3>{taskName}</h3>
                     <p>{studentName}</p>
                     <button onClick={handleDelete}>DELETE</button>
-                    <input type="checkbox" onClick={handleUpdate(idSelected, checked)}/>
+                    <input type="checkbox" onClick={handleUpdate}/>
                 </div>
             </div>
         </div>

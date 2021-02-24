@@ -64,7 +64,7 @@ const RequestMethod = () => {
     ═══════════════════════════════════════════════════════*/
     useEffect(() =>{
       if(id!==undefined){
-        axios.delete(`https://todos-academlo.herokuapp.com/api/todo/${id}`)//id из TaskCard
+        axios.delete(`http://todos-academlo.herokuapp.com/api/todo/${id}`)//id из TaskCard
         .then(response =>{
           console.log(response)
         })
@@ -78,7 +78,7 @@ const RequestMethod = () => {
     ═══════════════════════════════════════════════════════**/
    
     useEffect(() =>{
-      axios.put(`https://todos-academlo.herokuapp.com/api/todo/${idToUpdate}`,taskState)
+      axios.put(`http://todos-academlo.herokuapp.com/api/todo/${idToUpdate}`,taskState)
       .then(response =>{
         console.log("Обноблено!")
         console.log(response)
@@ -86,7 +86,7 @@ const RequestMethod = () => {
       .catch(err =>{
         console.log(err)
       })
-    },[])
+    },[idToUpdate, taskState])
 
    return(
       <>
