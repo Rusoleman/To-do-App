@@ -8,7 +8,7 @@ import axios from 'axios';
 const RequestMethod = () => {
     const[todos, setTodos]=useState([])
     const[id, setId]=useState("")
-    const[taskState, setTaskState]=useState()//Objet of all info in the card
+    const[taskState, setTaskState]=useState()
     const[idToUpdate, setIdToUpdate]=useState()
     
   /*═══════════════════════════════════════════════════════
@@ -44,10 +44,8 @@ const RequestMethod = () => {
                         Method POST 
     ═══════════════════════════════════════════════════════*/
    const[requestTask, setRequestTask]=useState(null)
-   //console.log("Message:",requestTask)
     useEffect(() =>{
       if(requestTask){
-        console.log("Sended:",requestTask)
         axios.post(`https://todos-academlo.herokuapp.com/api/todo`,requestTask)
           .then(response =>{
             console.log(response)
@@ -76,11 +74,9 @@ const RequestMethod = () => {
                           Method PUT 
     ═══════════════════════════════════════════════════════**/
     useEffect(() =>{
-      //console.log(idToUpdate, taskState)
       if(idToUpdate){
         axios.put(`https://todos-academlo.herokuapp.com/api/todo/${idToUpdate}`,taskState)
           .then(response =>{
-            console.log("Обноблено!", taskState)
             console.log(response)
           })
           .catch(err =>{

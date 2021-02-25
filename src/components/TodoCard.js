@@ -7,14 +7,17 @@ const TaskCard = ({taskName,studentName, idTask, deleteId, status, statusMesseng
     const [checked, setIsChecked] = useState(status)
 
     const handleDelete = () => {
-        console.log("Этот id будеть удален:",idTask);
         deleteId(idTask);
     }
 
     const handleUpdate = () => {
         setIsChecked((prevState) => {
             const actualState = !prevState;
-            statusMessenger(actualState)//This object we are sending
+            statusMessenger({
+                _id: idTask,
+                task:taskName,
+                student:studentName,
+                isCompleted:actualState})//This object we are sending
             updateId(idTask);
             return actualState;
         });
