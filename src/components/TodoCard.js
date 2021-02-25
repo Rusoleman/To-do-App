@@ -3,29 +3,27 @@ import './TodoCard-style.css'
 
 
 const TaskCard = ({taskName,studentName, idTask, deleteId, status, statusMessenger,updateId}) => {
-    const[idSelected, setIdSelected] =useState(idTask)
-    const [checked, setIsChecked] = useState()
 
-   useEffect(() =>{
-        if(status === true) {
-        setIsChecked(false)
-        } else {
-        setIsChecked(true)
-        }
-   },[status])
-   
+    const [checked, setIsChecked] = useState(status)
+
     const handleDelete = () => {
-        setIdSelected(idTask)
-        console.log("Этот id будеть удален:",idSelected);
-        deleteId(idSelected);
+        console.log("Этот id будеть удален:",idTask);
+        deleteId(idTask);
     }
 
     const handleUpdate = () => {
-        console.log("Id and status:",idSelected, checked)
-        statusMessenger(checked)
-        updateId(idSelected)
+        setIsChecked((prevState) => {
+            const actualState = !prevState;
+            statusMessenger(actualState)//This object we are sending
+            updateId(idTask);
+            return actualState;
+        });
     }
 
+    useEffect(() =>{
+        setIsChecked(status)
+   },[status])
+   
     return(
         <div>
             <div>
@@ -33,7 +31,7 @@ const TaskCard = ({taskName,studentName, idTask, deleteId, status, statusMesseng
                     <h3>{taskName}</h3>
                     <p>{studentName}</p>
                     <button onClick={handleDelete}>DELETE</button>
-                    <input type="checkbox" onClick={handleUpdate}/>
+                    <input checked={checked} type="checkbox" onChange={handleUpdate}/>
                 </div>
             </div>
         </div>

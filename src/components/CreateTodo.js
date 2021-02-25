@@ -4,16 +4,16 @@ import React,{useState} from 'react';
 import {useForm} from 'react-hook-form';
 
 const TodoForm = ({messenger}) =>{
-    const[newTask, setNewTask] = useState([])
+    const[newTask, setNewTask] = useState(null)
     const {register, handleSubmit, errors} = useForm();
 
     const onSubmit = data => {
         console.log(data);
-        setNewTask({
+        // setNewTask()
+        messenger({
             student:data.student,
             task:data.task
-        })
-        messenger(newTask);
+        });
     }
     return(
         <div>
